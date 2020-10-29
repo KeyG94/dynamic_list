@@ -12,41 +12,40 @@ addBook.style.outline = 'none';
 createBookList(listOfBooks);
 bookButton.addEventListener('click', handleSearch);
 
-function addBookToBookList(){
-    addBook.addEventListener('change', handleSearch);
-};
+function addBookToBookList() {
+	addBook.addEventListener('change', handleSearch);
+}
 
-function handleSearch(){
-    if(addBook.value.length >= 3){
-            const newItem = {
-            isbn: Date.now(),
-            title: addBook.value
-            };
+function handleSearch() {
+	if (addBook.value.length >= 3) {
+		const newItem = {
+			isbn: Date.now(),
+			title: addBook.value
+		};
 
-        listOfBooks.push(newItem);
-        createBookList(listOfBooks);
-        saveToStorage('list', listOfBooks);
-        addBook.value = '';
-    };
-};
+		listOfBooks.push(newItem);
+		createBookList(listOfBooks);
+		saveToStorage('list', listOfBooks);
+		addBook.value = '';
+	}
+}
 
 addBookToBookList();
 
-
 function createBookList(storageList) {
-    let output = '';
-    console.log(storageList);
+	let output = '';
+	console.log(storageList);
 
 	storageList.forEach(
 		(book) =>
 			(output += `<li><span>${book.title}</span><button class="btn" data-item="${book.isbn}">X</button></li>`)
-    );
-    
-    root.innerHTML = output;
-    
-    if(listOfBooks.length === 0){
-        root.innerHTML = 'There are no books to show';
-    }
+	);
+
+	root.innerHTML = output;
+
+	if (listOfBooks.length === 0) {
+		root.innerHTML = 'There are no books to show';
+	}
 
 	addClickEvent();
 }
@@ -55,10 +54,10 @@ function removeItem() {
 	const deleteThisItem = this.dataset.item;
 
 	const newBooks = listOfBooks.filter((book) => parseInt(deleteThisItem) !== parseInt(book.isbn));
-    
-    listOfBooks = newBooks;
-    console.log(listOfBooks)
-    saveToStorage('list', listOfBooks);
+
+	listOfBooks = newBooks;
+	console.log(listOfBooks);
+	saveToStorage('list', listOfBooks);
 	createBookList(listOfBooks);
 }
 

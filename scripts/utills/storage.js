@@ -1,13 +1,13 @@
-export function saveToStorage(key, value){
-    localStorage.setItem(key, JSON.stringify(value))
-};
+export function saveToStorage(key, value) {
+	localStorage.setItem(key, JSON.stringify(value));
+}
 
-export function getFromStorage(key){
-    const value = localStorage.getItem(key);
+export function getFromStorage(key) {
+	const value = localStorage.getItem(key);
 
-    if(!value){
-        return [];
-    }
+	if (!value) {
+		return [];
+	}
 
-    return JSON.parse(value);
+	return JSON.parse(value);
 }
