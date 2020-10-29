@@ -52,7 +52,7 @@ function createBookList(storageList) {
 }
 
 function removeItem() {
-	const deleteThisItem = event.target.dataset.item;
+	const deleteThisItem = this.dataset.item;
 
 	const newBooks = listOfBooks.filter((book) => parseInt(deleteThisItem) !== parseInt(book.isbn));
     
